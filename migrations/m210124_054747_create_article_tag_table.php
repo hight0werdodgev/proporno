@@ -7,9 +7,6 @@ use yii\db\Migration;
  */
 class m210124_054747_create_article_tag_table extends Migration
 {
-    /**
-     * {@inheritdoc}
-     */
     public function safeUp()
     {
         $this->createTable('{{%article_tag}}', [
@@ -19,9 +16,6 @@ class m210124_054747_create_article_tag_table extends Migration
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function safeDown()
     {
         $this->dropTable('{{%article_tag}}');
