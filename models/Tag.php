@@ -2,7 +2,8 @@
 
 namespace app\models;
 
-use Yii;
+use app\metamodels\SlugBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "tag".
@@ -11,35 +12,29 @@ use Yii;
  * @property string $title
  * @property string $slug
  */
-class Tag extends \yii\db\ActiveRecord
+class Tag extends ActiveRecord
 {
-    /**
-     * {@inheritdoc}
-     */
+
+    use SlugBehavior;
+
     public static function tableName()
     {
         return 'tag';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
-            [['title', 'slug'], 'required'],
+            [['title'], 'required'],
             [['title', 'slug'], 'string', 'max' => 255],
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
+            'title' => 'Имя',
             'slug' => 'Slug',
         ];
     }
