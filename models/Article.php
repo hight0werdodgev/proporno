@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\metamodels\SlugBehavior;
 use yii\db\ActiveRecord;
 
 /**
@@ -19,17 +20,14 @@ use yii\db\ActiveRecord;
  */
 class Article extends ActiveRecord
 {
-    /**
-     * {@inheritdoc}
-     */
+
+    use SlugBehavior;
+
     public static function tableName()
     {
         return 'article';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
@@ -42,21 +40,18 @@ class Article extends ActiveRecord
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
+            'title' => 'Заголовок',
             'slug' => 'Slug',
-            'description' => 'Description',
-            'content' => 'Content',
-            'meta_description' => 'Meta Description',
-            'status' => 'Status',
-            'date_of_creation' => 'Date Of Creation',
-            'date_of_change' => 'Date Of Change',
+            'description' => 'Описание',
+            'content' => 'Содержание',
+            'meta_description' => 'Описание для meta description',
+            'status' => 'Статус',
+            'date_of_creation' => 'Дата создания',
+            'date_of_change' => 'Дата последнего изменения',
         ];
     }
 }
