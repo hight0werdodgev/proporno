@@ -2,7 +2,8 @@
 
 namespace app\models;
 
-use Yii;
+use app\metamodels\SlugBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "category".
@@ -13,39 +14,33 @@ use Yii;
  * @property string|null $description
  * @property string|null $meta_description
  */
-class Category extends \yii\db\ActiveRecord
+class Category extends ActiveRecord
 {
-    /**
-     * {@inheritdoc}
-     */
+
+    use SlugBehavior;
+
     public static function tableName()
     {
         return 'category';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
-            [['title', 'slug'], 'required'],
+            [['title'], 'required'],
             [['description', 'meta_description'], 'string'],
             [['title', 'slug'], 'string', 'max' => 255],
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
+            'title' => 'Название',
             'slug' => 'Slug',
-            'description' => 'Description',
-            'meta_description' => 'Meta Description',
+            'description' => 'Описание',
+            'meta_description' => 'Описание для meta description',
         ];
     }
 }
