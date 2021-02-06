@@ -1,12 +1,9 @@
-<div class="admin-default-index">
-    <h1><?= $this->context->action->uniqueId ?></h1>
-    <p>
-        This is the view content for action "<?= $this->context->action->id ?>".
-        The action belongs to the controller "<?= get_class($this->context) ?>"
-        in the "<?= $this->context->module->id ?>" module.
-    </p>
-    <p>
-        You may customize this page by editing the following file:<br>
-        <code><?= __FILE__ ?></code>
-    </p>
-</div>
+<?php
+
+use yii\helpers\Url;
+
+?>
+<p><a href="<?= Url::to(['/admin/article/index'])?>">Статьи</a></p>
+<p><a href="<?= Url::to(['/admin/category/index'])?>">Категории</a></p>
+<p><a href="<?= Url::to(['/admin/tag/index'])?>">Тэги</a></p>
+<p><a href="<?= Url::to(['/admin/comment/index'])?>">Комментарии</a></p>
