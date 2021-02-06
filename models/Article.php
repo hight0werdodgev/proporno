@@ -34,7 +34,8 @@ class Article extends ActiveRecord
             [['title'], 'required'],
             [['description', 'content', 'meta_description'], 'string'],
             [['status'], 'integer'],
-            [['date_of_change'], 'safe'],
+            [['status'], 'default', 'value' => 0],
+            [['date_of_change'], 'default', 'value' => date('Y-m-d')],
             [['date_of_creation'], 'default', 'value' => date('Y-m-d')],
             [['title', 'slug'], 'string', 'max' => 255],
         ];
