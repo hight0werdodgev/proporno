@@ -55,4 +55,11 @@ class Article extends ActiveRecord
             'date_of_change' => 'Дата последнего изменения',
         ];
     }
+
+    public function saveImage($filename)
+    {
+        $this->image = $filename;
+
+        return $this->save(false);
+    }
 }
