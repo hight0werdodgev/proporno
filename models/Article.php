@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "article".
@@ -17,7 +17,7 @@ use Yii;
  * @property string|null $date_of_creation
  * @property string|null $date_of_change
  */
-class Article extends \yii\db\ActiveRecord
+class Article extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -33,10 +33,11 @@ class Article extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'slug'], 'required'],
+            [['title'], 'required'],
             [['description', 'content', 'meta_description'], 'string'],
             [['status'], 'integer'],
-            [['date_of_creation', 'date_of_change'], 'safe'],
+            [['date_of_change'], 'safe'],
+            [['date_of_creation'], 'default', 'value' => date('Y-m-d')],
             [['title', 'slug'], 'string', 'max' => 255],
         ];
     }
