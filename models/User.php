@@ -58,7 +58,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentity($id)
     {
-        // TODO: Implement findIdentity() method.
+        return User::findOne($id);
     }
 
     /**
@@ -81,7 +81,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getId()
     {
-        // TODO: Implement getId() method.
+        return $this->id;
     }
 
     /**
@@ -117,5 +117,15 @@ class User extends ActiveRecord implements IdentityInterface
     public function validateAuthKey($authKey)
     {
         // TODO: Implement validateAuthKey() method.
+    }
+
+    public static function findByUsername($username) : User
+    {
+        return User::findOne(['name' => $username]);
+    }
+
+    public function validatePassword($password) : bool
+    {
+        return $this->password === $password;
     }
 }

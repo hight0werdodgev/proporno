@@ -38,4 +38,9 @@ class Tag extends ActiveRecord
             'slug' => 'Slug',
         ];
     }
+
+    public function getArticles()
+    {
+        return $this->hasMany(Article::class, ['id' => 'article_id'])->viaTable('article_tag', ['tag_id' => 'id']);
+    }
 }

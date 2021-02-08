@@ -43,4 +43,9 @@ class Category extends ActiveRecord
             'meta_description' => 'Описание для meta description',
         ];
     }
+
+    public function getArticles()
+    {
+        return $this->hasMany(Article::class, ['category_id' => 'id']);
+    }
 }
